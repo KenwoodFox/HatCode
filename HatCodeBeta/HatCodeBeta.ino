@@ -8,7 +8,7 @@
 #endif
 
   int val = 0;
-  int coffee = 17;
+  int coffee = 86;
   int stress = 67;
 
 void setup() {
@@ -59,7 +59,7 @@ void setup() {
   delay(10);
   
   lcd.print("By Joe          "); 
-  lcd.print("Version 1.3.2");
+  lcd.print("Version 1.4.4");
   delay(6000);
   
 }
@@ -88,14 +88,15 @@ void loop() {
   lcd.write(0xFE);
   lcd.write(0x58);
   delay(10); //Clear
-  val = val + 1;
+  val + 1;
 
-  if(val = 16) {
-    coffee = coffee + 1;
+  if(val = 8) {
+    coffee = coffee - 1;
     stress = stress + 1;
+    val - 8;
 
-    if (coffee >= 100){
-      coffee = 10;
+    if (coffee >= 100 || coffee <= 0){
+      coffee = 90;
       stress = 24;
     }
   }
