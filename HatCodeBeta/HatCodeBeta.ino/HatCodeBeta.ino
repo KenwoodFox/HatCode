@@ -7,15 +7,16 @@
   SoftwareSerial lcd = SoftwareSerial(0,2);
 #endif
 
-  int val = 0;
-  int coffee = 86;
-  int stress = 67;
+int matchNum = 1;
+int rankNum = 1;
+
+int potpin = 0; // analog pin for pot
 
 void setup() {
   int load = 0;
-  
+
   lcd.begin(9600);  
-  
+
   // display size
   lcd.write(0xFE);
   lcd.write(0xD1);
@@ -40,9 +41,8 @@ void setup() {
   lcd.write(0x58);
   delay(10);
   
-
+  // booting sequence
   lcd.print("Booting potatOS ");
-
   lcd.print("=");
   delay(520);
   lcd.print("=");
@@ -57,8 +57,7 @@ void setup() {
   lcd.write(0xFE);
   lcd.write(0x58);
   delay(10);
-  
-  lcd.print("By Joe          "); 
+   
   lcd.print("Version 1.4.4");
   delay(6000);
   
@@ -76,29 +75,15 @@ void loop() {
   lcd.write(0xFE);
   lcd.write(0x58);
   delay(10); //Clear
+
+  lcd.print("Match Number: ");
+  lcd.print(matchNum); //prints the match number, defined with a button push
+
+  lcd.print("  ");
+
+  rankNum = analogRead(potpin);
+  rankNum = map(rankNum, 0, 1028, 0, 80); // maps the rank number between 0 and 80
+  lcd.print("Rank: ");
+  lcd.print(rankNum, 0); //prints the rank number, defined with potentometer
   
-  lcd.print("Coffee:");
-  lcd.print(coffee);
-  lcd.print("%      ");
-  lcd.print("stress:");
-  lcd.print(stress);
-  lcd.print("%");
-  delay(8000);
-
-  lcd.write(0xFE);
-  lcd.write(0x58);
-  delay(10); //Clear
-  val + 1;
-
-  if(val = 8) {
-    coffee = coffee - 1;
-    stress = stress + 1;
-    val - 8;
-
-    if (coffee >= 100 || coffee <= 0){
-      coffee = 90;
-      stress = 24;
-    }
-  }
-
 }
