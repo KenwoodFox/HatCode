@@ -70,7 +70,8 @@ void loop() {
   
   lcd.print("    FRC 1721    ");
   lcd.print("   Drive Team");
-  delay(8000);
+  delay(8000); //Comment out for testing
+  //delay(10); //Comment out for function
     
   lcd.write(0xFE);
   lcd.write(0x58);
@@ -79,11 +80,14 @@ void loop() {
   lcd.print("Match Number: ");
   lcd.print(matchNum); //prints the match number, defined with a button push
 
-  lcd.print("  ");
+  lcd.print(" ");
+
 
   rankNum = analogRead(potpin);
   rankNum = map(rankNum, 0, 1028, 0, 80); // maps the rank number between 0 and 80
   lcd.print("Rank: ");
-  lcd.print(rankNum, 0); //prints the rank number, defined with potentometer
+  lcd.print(rankNum); //prints the rank number, defined with potentometer
+  delay(8000); //Comment out for testing
+  //delay(200); //Comment out for function
   
 }
