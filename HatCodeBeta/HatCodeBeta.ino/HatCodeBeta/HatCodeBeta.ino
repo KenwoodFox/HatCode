@@ -10,8 +10,6 @@
 int matchNum = 1;
 int rankNum = 1;
 
-int potpin = 0; // analog pin for pot
-
 void setup() {
   int load = 0;
 
@@ -36,11 +34,19 @@ void setup() {
   lcd.write(255);
   delay(10);       
   
-  // clear screen
+  cls(); //clear screen of param lettering
+  
+  boot(); //Boot Loader Screen
+}
+
+void cls(){
+  //This function will clear the screen and wait 10ms
   lcd.write(0xFE);
   lcd.write(0x58);
   delay(10);
-  
+}
+
+void boot(){
   // booting sequence
   lcd.print("Booting potatOS ");
   lcd.print("=");
@@ -51,22 +57,14 @@ void setup() {
     lcd.print("=");
     delay(90);
   }
-
   delay(300);
-  
-  lcd.write(0xFE);
-  lcd.write(0x58);
-  delay(10);
-   
+  cls();
   lcd.print("Version 1.4.4");
   delay(6000);
-  
 }
 
 void loop() {
-  lcd.write(0xFE);
-  lcd.write(0x58);
-  delay(10); //Clear
+  cls();
   
   lcd.print("    FRC 1721    ");
   lcd.print("   Drive Team");
@@ -77,17 +75,7 @@ void loop() {
   lcd.write(0x58);
   delay(10); //Clear
 
-  lcd.print("Match Number: ");
-  lcd.print(matchNum); //prints the match number, defined with a button push
-
-  lcd.print(" ");
-
-
-  rankNum = analogRead(potpin);
-  rankNum = map(rankNum, 0, 1028, 0, 80); // maps the rank number between 0 and 80
-  lcd.print("Rank: ");
-  lcd.print(rankNum); //prints the rank number, defined with potentometer
-  delay(8000); //Comment out for testing
-  //delay(200); //Comment out for function
-  
+  lcd.print("----------------");
+  lcd.print("----------------");
 }
+
