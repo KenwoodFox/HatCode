@@ -1,4 +1,4 @@
-#include "Arduino.h"
+#include "RTClib.h"
 
 #if defined(ARDUINO_ARCH_SAMD) || defined(__SAM3X8E__) 
   #define lcd Serial1 
@@ -9,6 +9,7 @@
 
 int matchNum = 1;
 int rankNum = 1;
+int load = 0;
 
 void setup() {
   int load = 0;
@@ -59,9 +60,49 @@ void boot(){
   }
   delay(300);
   cls();
-  lcd.print("Version 1.4.4");
+  lcd.print("Version 17.2.1");
+  lcd.print("          by Joe");
   delay(6000);
+
+  lcd.write(0xFE);
+  lcd.write(0xD0);
+  lcd.write(1); 
+  delay(10);
 }
+
+void red()
+{
+  lcd.write(0xFE);
+  lcd.write(0xD0);
+  lcd.write(0xFF);
+  lcd.write(0x1);
+  lcd.write(0x1);
+  //lcd.print("red");
+  delay(10);
+}
+
+void green()
+{
+  lcd.write(0xFE);
+  lcd.write(0xD0);
+  lcd.write(0xFF);
+  lcd.write(0xFF);
+  lcd.write(0x1);
+  //lcd.print("green");
+  delay(10);
+}
+
+void blue()
+{
+  lcd.write(0xFE);
+  lcd.write(0xD0);
+  lcd.write(0xFF);
+  lcd.write(0xFF);
+  lcd.write(0xFF);
+  //lcd.print("blue");
+  delay(10);
+}
+
 
 void loop() {
   cls();
@@ -75,7 +116,14 @@ void loop() {
   lcd.write(0x58);
   delay(10); //Clear
 
-  lcd.print("----------------");
-  lcd.print("----------------");
+  lcd.print("  Thinking In   ");
+  lcd.print("    Progress... ");
+  delay(8000);
+
+  red();
+  lcd.print("1v1 me m8, ur   ");
+  lcd.print("bad at minecraft");
+  delay(8000);
+  blue();
 }
 
