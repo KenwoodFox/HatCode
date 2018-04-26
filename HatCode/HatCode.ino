@@ -7,11 +7,10 @@
   SoftwareSerial lcd = SoftwareSerial(0,2);
 #endif
 
-int matchNum = 1;
-int rankNum = 1;
 int load = 0;
 
-void setup() {
+void setup()
+{
   int load = 0;
 
   lcd.begin(9600);  
@@ -40,14 +39,16 @@ void setup() {
   boot(); //Boot Loader Screen
 }
 
-void cls(){
+void cls()
+{
   //This function will clear the screen and wait 10ms
   lcd.write(0xFE);
   lcd.write(0x58);
   delay(10);
 }
 
-void boot(){
+void boot()
+{
   // booting sequence
   lcd.print("Booting potatOS ");
   lcd.print("=");
@@ -104,21 +105,20 @@ void blue()
 }
 
 
-void loop() {
+void loop() 
+{
   cls();
   
   lcd.print("    FRC 1721    ");
   lcd.print("   Drive Team");
   delay(8000); //Comment out for testing
   //delay(10); //Comment out for function
-    
-  lcd.write(0xFE);
-  lcd.write(0x58);
-  delay(10); //Clear
+  cls();
 
   lcd.print("  Thinking In   ");
   lcd.print("    Progress... ");
   delay(8000);
+  cls();
 
   red();
   lcd.print("1v1 me m8, ur   ");
