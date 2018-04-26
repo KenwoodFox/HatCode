@@ -8,6 +8,7 @@
 #endif
 
 int load = 0;
+int frame = 8000; //Time between frames
 
 void setup()
 {
@@ -35,7 +36,8 @@ void setup()
   delay(10);       
   
   cls(); //clear screen of param lettering
-  
+
+  blue();
   boot(); //Boot Loader Screen
 }
 
@@ -65,10 +67,8 @@ void boot()
   lcd.print("          by Joe");
   delay(6000);
 
-  lcd.write(0xFE);
-  lcd.write(0xD0);
-  lcd.write(1); 
-  delay(10);
+  cls();
+  blue();
 }
 
 void red()
@@ -108,22 +108,28 @@ void blue()
 void loop() 
 {
   cls();
-  
+
+  blue();
   lcd.print("    FRC 1721    ");
-  lcd.print("   Drive Team");
-  delay(8000); //Comment out for testing
-  //delay(10); //Comment out for function
+  lcd.print("   Drive Team   ");
+  delay(frame); //Comment out for testing
   cls();
 
   lcd.print("  Thinking In   ");
-  lcd.print("    Progress... ");
-  delay(8000);
+  lcd.print("   Progress...  ");
+  delay(frame);
   cls();
 
-  red();
   lcd.print("1v1 me m8, ur   ");
   lcd.print("bad at minecraft");
-  delay(8000);
-  blue();
+  delay(10);
+  while(load <= 32)
+  {
+    blue();
+    delay(200);
+    red();
+    delay(200);
+    load++;
+  }
 }
 
