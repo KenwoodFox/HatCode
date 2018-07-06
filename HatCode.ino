@@ -7,7 +7,7 @@
   SoftwareSerial lcd = SoftwareSerial(0,2);
 #endif
 
-int load = 0;
+int load = 0; //Inital Loader
 int frame = 8000; //Time between frames
 
 void setup()

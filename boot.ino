@@ -12,7 +12,7 @@ void boot()
   }
   delay(300);
   cls();
-  lcd.print("Version 17.2.1");
+  lcd.print("Version  2.2.1");
   lcd.print("          by Joe");
   delay(6000);
 
